@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	
+	<script>
+		function visualizar()
+		{
+	  		var table = document.getElementById("tabla");
+	  		
+	  		for (var k = 1; k < 5; k++) 
+	  		{
+		  		var row = table.insertRow(k);
+		  		var cell1 = row.insertCell(0);
+		  		var cell2 = row.insertCell(1);
+		  		cell1.innerHTML = "Nombre  " +k;
+		  		cell2.innerHTML = "  Descripcion" +k;
+	  		}
+	  		
+		}
+		
+	</script>
+	
+</head>
+<body>
+
+
+	<table id="tabla">
+		<tr>
+			<th> Nombre</th>
+			<th> Descripcion</th>
+	  	</tr>
+	</table>
+	
+	<button onClick="visualizar()" >Mostrar Tabla</button>
+
+
+	
+</body>
+</html>

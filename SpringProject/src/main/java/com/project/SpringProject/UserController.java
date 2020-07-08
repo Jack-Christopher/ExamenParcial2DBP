@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -19,40 +20,35 @@ public class UserController
 	Elemento elem;
 	
 		
-	@GetMapping
+	@GetMapping()
 	public String getUser()
 	{
 		
 		String todo="[ ";
-		String aux;
 		Iterator<Elemento> it = lista.iterator();
 		
 		while(it.hasNext())
 		{
 			elem = it.next();
-			aux = "{ nombre: "+ elem.getNombre()+ "  descripcion: "+elem.getDescripcion()+ " }";
-			todo += aux; 
+			todo += elem.toString()+",";
 		}
+		int size = todo.length();
+		todo = todo.substring(0, size-1);
 		todo += " ]";
-		 
+		
+		
+		
 		return todo;
 	}
 	
-	@PostMapping
-	public void createUser( String nombre, String descripcion)
+		
+	@PostMapping("/registrar")
+	public void createUser(@RequestParam("nombre") String nombre,
+			@RequestParam("descripcion") String descripcion)
 	{
-		elem.setNombre(nombre);
-		elem.setDescripcion(descripcion);
-		lista.add(elem);
+		Elemento el = new Elemento(nombre, descripcion);
+	 	lista.add(el);
 	}
-	
-	
-	@DeleteMapping
-	public void deleteUser( int id)
-	{
-		lista.remove(id);		
-	}
-	
-	
 	
 }
+

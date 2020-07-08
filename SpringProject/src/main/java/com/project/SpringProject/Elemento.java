@@ -3,26 +3,15 @@ package com.project.SpringProject;
 public class Elemento 
 {
 	
-	private int id;
 	private String nombre;
 	private String descripcion;
 
-	public Elemento (int id, String nombre, String descripcion) {
-		this.id = id;
+	public Elemento (String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
 
-	
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+		
 	public String getNombre() {
 		return nombre;
 	}
@@ -42,10 +31,7 @@ public class Elemento
 	@Override
 	public String toString() 
 	{
-	    return "Value{" +
-	        "nombre=" + nombre +
-	        ", descripcion='" + descripcion + '\'' +
-	        '}';
+	    return "{nombre='" + nombre +"', descripcion='" + descripcion +"'}";
 	}
 
 
